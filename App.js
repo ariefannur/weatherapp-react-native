@@ -30,7 +30,7 @@ class Header extends Component{
   render(){
     return(
       <View style={styles.titlecontent}>
-        <Image source={this.props.himage} style={{width:100, height:30}} />
+        <Image source={this.props.himage} style={styles.imageheader} />
         <View>
           <Text>{this.props.htitle}</Text>
           <Text>{this.props.hdesc}</Text>
@@ -136,6 +136,13 @@ const styles = StyleSheet.create({
   image:{
     height:50,
     width:50
+  },
+
+  imageheader:{
+    width:100, 
+    height:40, 
+    resizeMode:'center',
+    justifyContent: 'center'
   }
   
 });
