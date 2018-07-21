@@ -10,11 +10,26 @@ import React, {Component} from 'react';
 import {AppRegistry, FlatList, StyleSheet, Text, View,ActivityIndicator, ToolbarAndroid, Image} from 'react-native';
 
 class ItemList extends Component{
+
+  getListImage(tipe) {
+
+    if(tipe == "12" || tipe == "39"){
+      return require('./img/rain.png')
+    }else if(tipe == "30" || tipe == "39" || tipe == "26"){
+      return require('./img/cloudy.png')
+    }else if(tipe == "32"){
+      return require('./img/sun.png')
+    }else{
+      return require('./img/cloudy.png')
+    }
+  }
+  
   render(){
+    var imglist = this.getListImage(this.props.imgitem)
    return(
      <View style={styles.item}>
        <View>
-          <Image source={require('./img/rain.png')} style={styles.image} />
+          <Image source={imglist} style={styles.image} />
           <Text>{this.props.itemtitle}</Text>
        </View>
        <View>
@@ -92,7 +107,7 @@ export default class FlatListSimple extends Component {
         <FlatList
           data={this.state.dataSource.item.forecast}
           renderItem={
-            ({item}) => <ItemList style={styles.item} itemtitle={item.text} itemdate={item.date} itemtemp={item.high}></ItemList>
+            ({item}) => <ItemList style={styles.item} itemtitle={item.text} itemdate={item.date} itemtemp={item.high} imgitem={item.code} ></ItemList>
           }
         />
           
